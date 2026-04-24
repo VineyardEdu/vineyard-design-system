@@ -7,15 +7,15 @@
 
 ## 배경
 
-포도밭학원 모노레포 상황에는 **총 7개 프로젝트**가 있고, 각각 **별도 git 레포**다.
+포도밭학원에는 여러 내부 프로젝트가 있고, 각각 **별도 git 레포**다. (2026-04-24 기준 총 7개. 향후 늘거나 줄 수 있음.)
 
 - **홈페이지**: `vineyard-web` (Next.js 15 + React 19 + pnpm, 디자인이 유일하게 정리·토큰화되어 있음)
 - **백오피스**: `vineyard-back-office`
-- **도구용 웹서비스 5개**: `vineyard-essay-grading`, `vineyard-homework-correction`, `vineyard-ocr-to-quiz`, `vineyard-report`, `vineyard-bookstore`
+- **도구용 웹서비스들**: `vineyard-essay-grading`, `vineyard-homework-correction`, `vineyard-ocr-to-quiz`, `vineyard-report`, `vineyard-bookstore`
 
-현재 홈페이지를 제외한 6개 프로젝트는 UI 통일성이 떨어진다. 홈페이지 디자인을 원천으로 디자인 시스템을 만들어, 다른 서비스에 일관되게 적용하는 것이 전체 목표다.
+현재 홈페이지를 제외한 나머지 프로젝트들은 UI 통일성이 떨어진다. 홈페이지 디자인을 원천으로 디자인 시스템을 만들어, 다른 서비스에 일관되게 적용하는 것이 전체 목표다.
 
-**이 레포(`vineyard-design-system`)의 역할**: 디자인 시스템 코드를 보관하는 저장소. 디자인 시스템 자체는 별도 도구 **클로드디자인**과 함께 제작 중이며, 이 레포는 산출물을 담고 7개 프로젝트에 배포하는 역할을 한다.
+**이 레포(`vineyard-design-system`)의 역할**: 디자인 시스템 코드를 보관하는 저장소. 디자인 시스템 자체는 별도 도구 **클로드디자인**과 함께 제작 중이며, 이 레포는 산출물을 담고 각 소비 프로젝트에 배포하는 역할을 한다.
 
 ---
 
@@ -82,7 +82,7 @@ import "vineyard-design-system/components.css"
 ```
 - 클로드디자인 산출물이 **그대로** 계약 = CSS 클래스 이름
 - 업데이트 시 **폴더 덮어쓰기만** → 코드 변경 0
-- `preview/*.html` 이 사실상 사용설명서 = 소비자는 HTML 스니펫 복붙
+- `preview/*.html` 이 사실상 사용설명서 = 각 소비 프로젝트는 HTML 스니펫 복붙
 - 사용자가 "손 안 대고 가져다 쓰고 싶다"는 요구에 맞음 ✅
 
 ### 동작(behavior)이 있는 컴포넌트 처리
@@ -94,11 +94,13 @@ import "vineyard-design-system/components.css"
 
 ## 클로드디자인에 해야 할 요청 (1개)
 
-현재 `preview/*.html` 의 스타일은 각 파일의 인라인 `<style>` 블록에 들어 있음. 모델 B로 가면 이걸 7개 프로젝트가 공유해야 하므로:
+현재 `preview/*.html` 의 스타일은 각 파일의 인라인 `<style>` 블록에 들어 있음. 모델 B로 가면 이걸 각 소비 프로젝트가 공유해야 하므로:
 
 > **"컴포넌트 CSS를 외부 파일(`components.css`) 하나로 묶어서 출력해달라."**
 
 이걸 요청하지 않으면 각 소비 프로젝트가 HTML에서 `<style>`을 긁어와야 해서 드리프트가 생김.
+
+> **주의**: 이 문서에서도 "내부 프로젝트" 같은 일반화 표현을 쓴다. 개수는 시간에 따라 변할 수 있으므로 하드코딩하지 않는다.
 
 대안: 이 레포에 HTML→CSS 추출 스크립트를 1회성으로 둘 수도 있지만, 이것도 결국 사람 손이 들어가므로 클로드디자인 쪽 수정이 더 깔끔.
 
@@ -112,7 +114,7 @@ import "vineyard-design-system/components.css"
 ```
 vineyard-design-system/
 ├── podobat-design-system/   ← 클로드디자인 산출물 그대로, 건드리지 않음
-├── package.json              ← 7개 레포가 github: 로 import
+├── package.json              ← 각 소비 레포가 github: 로 import
 ├── index.css                 ← @import "./podobat-design-system/colors_and_type.css" 등
 ├── README.md                 
 └── .gitignore
@@ -148,7 +150,7 @@ vineyard-design-system/
 **권장: Public**
 - 민감 정보 없음 (색/타입 토큰 + 오픈소스 Pretendard + 아이콘 + CSS)
 - 홈페이지(podobat.com)는 이미 공개되어 있으므로 디자인은 이미 공개된 상태
-- 7개 소비 레포 CI/로컬 세팅 부담 0
+- 각 소비 레포 CI/로컬 세팅 부담 0
 - 조직 정책상 private이 기본이라면 SSH 방식(두 번째)도 실용적
 
 ---
@@ -157,7 +159,7 @@ vineyard-design-system/
 
 ### 1차 (트랙 A): 토큰/폰트/에셋 배포 — 즉시
 - git init, package.json, README
-- 7개 프로젝트에 배포 방식 문서화
+- 각 소비 프로젝트에 배포 방식 문서화
 - 적어도 1개 소비 프로젝트에서 import 검증
 
 ### 2차 (트랙 B): 8개 컴포넌트 CSS 완성 — 점진
@@ -183,5 +185,5 @@ vineyard-design-system/
 
 1. 위 **결정 사항 2개** 확정 (구조 / 공개 여부)
 2. 확정되면 `git init`, `package.json`, `README.md`, `.gitignore` 작성
-3. 7개 소비 프로젝트 중 1개(예: `vineyard-back-office`)에 붙여 보는 검증
+3. 소비 프로젝트 중 1개(예: `vineyard-back-office`)에 붙여 보는 검증
 4. 클로드디자인에 `components.css` 요청

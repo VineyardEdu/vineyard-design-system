@@ -1,6 +1,6 @@
 # vineyard-design-system
 
-포도밭 국어논술(Podobat Korean-Language & Writing Academy) 내부 7개 프로젝트가 공유하는 디자인 시스템 저장소.
+포도밭 국어논술(Podobat Korean-Language & Writing Academy) 내부 프로젝트들이 공유하는 디자인 시스템 저장소.
 
 디자인 시스템 자체는 [**클로드디자인**](https://claude.ai) 과 함께 제작되며, 이 레포는 그 산출물을 보관하고 소비 프로젝트에 배포한다.
 
