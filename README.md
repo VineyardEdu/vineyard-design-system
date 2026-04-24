@@ -30,9 +30,9 @@ vineyard-design-system/
 ### 1. 설치
 
 ```bash
-npm install github:hanbeulYou/vineyard-design-system
+npm install github:VineyardEdu/vineyard-design-system
 # 또는 특정 버전/커밋:
-# npm install github:hanbeulYou/vineyard-design-system#v0.1.0
+# npm install github:VineyardEdu/vineyard-design-system#v0.1.0
 ```
 
 > `pnpm`, `yarn` 도 같은 방식으로 동작.

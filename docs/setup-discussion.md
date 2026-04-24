@@ -92,13 +92,19 @@ import "vineyard-design-system/components.css"
 
 ---
 
-## 클로드디자인에 해야 할 요청 (1개)
+## 클로드디자인에 해야 할 요청
 
-현재 `preview/*.html` 의 스타일은 각 파일의 인라인 `<style>` 블록에 들어 있음. 모델 B로 가면 이걸 각 소비 프로젝트가 공유해야 하므로:
+현재 `preview/*.html` 의 스타일은 각 파일의 인라인 `<style>` 블록에 들어 있음. 모델 B로 가면 이걸 각 소비 프로젝트가 공유해야 하므로 외부 CSS 파일로 빼야 함.
 
-> **"컴포넌트 CSS를 외부 파일(`components.css`) 하나로 묶어서 출력해달라."**
+**분리 원칙으로 요청**:
 
-이걸 요청하지 않으면 각 소비 프로젝트가 HTML에서 `<style>`을 긁어와야 해서 드리프트가 생김.
+> `preview/*.html` 의 인라인 `<style>` 내용을 **컴포넌트별 CSS 파일**로 분리해서 `components/buttons.css`, `components/chips-badges.css`, `components/dropdown.css`, `components/floating-widget.css`, `components/form-inputs.css`, `components/spinner.css`, `components/subject-tiles.css`, `components/toast.css` 에 출력해주세요. `components/index.css` 에서 이 파일들을 `@import` 로 모아 단일 진입점을 제공해주세요. 각 `preview/*.html` 은 `<link>` 로 해당 컴포넌트 CSS 하나만 참조하도록 바꿔주세요.
+
+**왜 통합 `components.css` 가 아니라 분리인가:**
+- 클로드디자인이 컴포넌트별로 재생성하는 구조 → 통합 파일이면 한 컴포넌트 변경 시 다른 컴포넌트 영역까지 의도치 않게 재포맷될 위험
+- git diff 가 컴포넌트 단위로 읽혀 업데이트 추적 명확
+- `preview/*.html` ↔ `components/*.css` 1:1 매핑으로 의존성 투명
+- 소비 프로젝트는 Next/Vite 번들러가 `@import` 를 다뤄주므로 분리 단점 거의 없음
 
 > **주의**: 이 문서에서도 "내부 프로젝트" 같은 일반화 표현을 쓴다. 개수는 시간에 따라 변할 수 있으므로 하드코딩하지 않는다.
 
