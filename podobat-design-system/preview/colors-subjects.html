@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 16px; }
+  .pair { display:flex; border-radius:10px; overflow:hidden; border:1px solid var(--border); min-height:70px; }
+  .half { flex:1; padding:10px 12px; display:flex; flex-direction:column; justify-content:space-between; }
+  .hex { font-size:10px; font-family:'SF Mono',ui-monospace,monospace; opacity:.75; }
+  .tag { font-size:11px; font-weight:600; letter-spacing:-.01em; }
+  .pairs { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; }
+</style></head>
+<body><div class="card">
+  <div class="pairs">
+    <div class="pair">
+      <div class="half" style="background:#0e2b69;color:#fff"><span class="tag">blue-0</span><span class="hex">#0e2b69</span></div>
+      <div class="half" style="background:#e5ecfb;color:#0e2b69"><span class="tag">blue-1</span><span class="hex">#e5ecfb</span></div>
+    </div>
+    <div class="pair">
+      <div class="half" style="background:#0f2805;color:#fff"><span class="tag">green-0</span><span class="hex">#0f2805</span></div>
+      <div class="half" style="background:#e3ebe0;color:#0f2805"><span class="tag">green-1</span><span class="hex">#e3ebe0</span></div>
+    </div>
+    <div class="pair">
+      <div class="half" style="background:#431107;color:#fff"><span class="tag">red-0</span><span class="hex">#431107</span></div>
+      <div class="half" style="background:#f9e6e2;color:#431107"><span class="tag">red-1</span><span class="hex">#f9e6e2</span></div>
+    </div>
+  </div>
+  <div class="small" style="margin-top:10px">Subject themes, always paired — dark text on light fill. Blue=초등 논술 · Green=중등 국어 · Red=중등 논술</div>
+</div></body></html>

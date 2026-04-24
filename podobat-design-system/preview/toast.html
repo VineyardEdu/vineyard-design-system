@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 20px; background: #fafafc; }
+  .toast {
+    display:flex; align-items:center; gap:10px;
+    padding: 12px 16px; border-radius: 10px;
+    background: #fff; border: 1px solid var(--border);
+    box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    font-size: 14px; font-weight: 500; max-width: 320px;
+  }
+  .toast img { width:20px; height:20px; flex-shrink:0; }
+  .stack { display:flex; flex-direction:column; gap:12px; }
+  .err    { border-color: var(--color-secondary-0); }
+  .err   .dot { background: var(--color-secondary-0); }
+  .ok    .dot { background: #22c55e; }
+  .info  .dot { background: var(--color-primary-1); }
+  .dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+</style></head>
+<body><div class="card">
+  <div class="stack">
+    <div class="toast ok"><span class="dot"></span><span>문의가 정상적으로 접수되었습니다.</span></div>
+    <div class="toast info"><span class="dot"></span><span>새 공지가 도착했습니다.</span></div>
+    <div class="toast err"><img src="../assets/alert-circle-fill.svg"><span style="color:var(--color-secondary-0)">네트워크 오류입니다. 다시 시도해 주세요.</span></div>
+  </div>
+</div></body></html>

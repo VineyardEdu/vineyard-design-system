@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 16px; }
+  .radii { display:flex; gap:14px; align-items:flex-end; }
+  .box { width:72px; height:72px; background:var(--color-primary-2); border:1px solid var(--color-primary-40); display:flex; align-items:flex-end; justify-content:center; padding-bottom:4px; font-size:10px; font-family:'SF Mono',ui-monospace,monospace; color:var(--color-primary-0); }
+  .label { font-size:10px; color:var(--fg-subtle); text-align:center; margin-top:4px; font-family:'SF Mono',ui-monospace,monospace; }
+</style></head>
+<body><div class="card">
+  <div class="radii">
+    <div><div class="box" style="border-radius:2px">2</div><div class="label">xs · badge</div></div>
+    <div><div class="box" style="border-radius:6px">6</div><div class="label">sm · input</div></div>
+    <div><div class="box" style="border-radius:8px">8</div><div class="label">md · card</div></div>
+    <div><div class="box" style="border-radius:12px">12</div><div class="label">lg · tile</div></div>
+    <div><div class="box" style="border-radius:16px">16</div><div class="label">xl · banner</div></div>
+    <div><div class="box" style="border-radius:9999px">pill</div><div class="label">pill · chip</div></div>
+  </div>
+</div></body></html>

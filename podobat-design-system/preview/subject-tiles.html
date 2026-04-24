@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: 16px; background: #f8f8fb; }
+  .row { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .tile {
+    background:#fff; border:1px solid var(--border); border-radius: 12px; padding: 16px;
+    display:flex; flex-direction:column; gap:8px; transition: all .2s;
+    min-height: 110px;
+  }
+  .tile:hover { transform: translateY(-4px); }
+  .tile .kicker { font-size:11px; font-weight:600; letter-spacing:.02em; }
+  .tile h4 { font-size:17px; line-height:24px; font-weight:700; color:var(--fg); }
+  .tile p  { font-size:12px; color: var(--fg-muted); }
+  .tile.blue:hover  { border-color: var(--color-blue-40);  box-shadow: 0 0 4px 0 var(--color-blue-40); }
+  .tile.red:hover   { border-color: var(--color-red-40);   box-shadow: 0 0 4px 0 var(--color-red-40); }
+  .tile.green:hover { border-color: var(--color-green-40); box-shadow: 0 0 4px 0 var(--color-green-40); }
+  .kicker.blue  { color: var(--color-blue-0); }
+  .kicker.red   { color: var(--color-red-0); }
+  .kicker.green { color: var(--color-green-0); }
+</style></head>
+<body><div class="card">
+  <div class="row">
+    <div class="tile blue">
+      <span class="kicker blue">초등 논술</span>
+      <h4>구조 따라 생각을<br>펼치는 글쓰기</h4>
+      <p>관찰 · 비교 · 해석</p>
+    </div>
+    <div class="tile green">
+      <span class="kicker green">중등 국어</span>
+      <h4>개념 따라 낯선<br>작품 보는 국어</h4>
+      <p>문학 · 비문학 · 문법</p>
+    </div>
+    <div class="tile red">
+      <span class="kicker red">중등 논술</span>
+      <h4>세상의 관찰에서<br>나의 세계로</h4>
+      <p>사유 · 논증 · 표현</p>
+    </div>
+  </div>
+</div></body></html>

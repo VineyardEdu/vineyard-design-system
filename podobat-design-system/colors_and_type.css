@@ -1,0 +1,199 @@
+/* =========================================================
+   Podobat (포도밭 국어논술) — Colors & Type
+   Use these tokens on every surface. Values mirror the
+   production codebase (src/app/colors.css + fonts.css).
+   ========================================================= */
+
+/* ---------- 1. Fonts ---------- */
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-Thin.woff2')       format('woff2'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-ExtraLight.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-Light.woff2')      format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-Regular.woff2')    format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-Medium.woff2')     format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-SemiBold.woff2')   format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-Bold.woff2')       format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-ExtraBold.woff2')  format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('fonts/Pretendard-Black.woff2')      format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+
+:root {
+  /* ---------- 2. Color primitives ---------- */
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* Primary (브랜드 보라) — muted violet for authority, youthful indigo for accents */
+  --color-primary-0: #695189;   /* deep heading violet — logo, primary text accent */
+  --color-primary-1: #6e5dc7;   /* indigo — links, active tabs, CTA bg */
+  --color-primary-2: #eae7ff;   /* lavender tint — hover bg, subtle fills */
+
+  /* Secondary (warning orange — for errors, strong callouts) */
+  --color-secondary-0: #fd5d0e;
+
+  /* Neutral gray ramp — 0 darkest → 6 lightest */
+  --color-gray-0: #312e34;   /* body text / strong */
+  --color-gray-1: #474c51;   /* secondary text */
+  --color-gray-2: #5d5d5d;   /* tertiary / captions */
+  --color-gray-3: #8d8598;   /* placeholder, muted */
+  --color-gray-4: #cac7cd;   /* disabled, hairline */
+  --color-gray-5: #e0e0e8;   /* borders, dividers */
+  --color-gray-6: #f2f2f5;   /* surface-alt bg */
+
+  /* Semantic subject accents — always used as a dark/light pair */
+  --color-blue-0: #0e2b69;   /* 초등 논술 — deep navy */
+  --color-blue-1: #e5ecfb;   /* 초등 논술 — pale sky */
+  --color-green-0: #0f2805;  /* 중등 국어 — forest */
+  --color-green-1: #e3ebe0;  /* 중등 국어 — moss cream */
+  --color-red-0: #431107;    /* 중등 논술 — oxblood */
+  --color-red-1: #f9e6e2;    /* 중등 논술 — blush */
+
+  /* 40% alpha variants — used for focus rings + hairline shadows */
+  --color-primary-40: #69518966;
+  --color-blue-40:    #0e2b6966;
+  --color-green-40:   #0f280566;
+  --color-red-40:     #43110766;
+  --color-gray-40:    #312e3466;
+  --color-white-40:   #ffffff66;
+
+  /* ---------- 3. Semantic aliases ---------- */
+  --bg:           var(--color-white);
+  --bg-alt:       var(--color-gray-6);      /* section bg (main board, footer) */
+  --bg-hover:     var(--color-primary-2);   /* lavender hover */
+  --fg:           var(--color-gray-0);      /* primary text */
+  --fg-muted:     var(--color-gray-2);      /* body copy, descriptions */
+  --fg-subtle:    var(--color-gray-3);      /* placeholder, meta */
+  --fg-disabled:  var(--color-gray-4);
+  --fg-on-dark:   var(--color-white);
+  --accent:       var(--color-primary-0);   /* headings on marketing */
+  --accent-link:  var(--color-primary-1);   /* active, links, CTA */
+  --border:       var(--color-gray-5);
+  --divider:      var(--color-gray-5);
+  --danger:       var(--color-secondary-0);
+
+  /* ---------- 4. Radii ---------- */
+  --radius-xs: 2px;     /* small badges */
+  --radius-sm: 6px;     /* inputs mobile */
+  --radius-md: 8px;     /* cards mobile */
+  --radius-lg: 12px;    /* cards desktop, link tiles */
+  --radius-xl: 16px;    /* banner */
+  --radius-pill: 9999px;
+
+  /* ---------- 5. Elevation ---------- */
+  --shadow-hairline:    0 0 1px 0 rgba(49,46,52,.40);            /* default chip/card edge */
+  --shadow-primary-40:  0 0 1px 0 rgba(105,81,137,.40);          /* active chip */
+  --shadow-focus-ring:  0 0 4px 0 rgba(105,81,137,.40);          /* hover theme-border */
+  --shadow-soft:        0 0 20px 0 rgba(0,0,0,.02);              /* tab card soft */
+  --shadow-nav:         0 1px 2px 0 rgba(0,0,0,.05);             /* sticky top nav */
+  --text-shadow-sm:     0 0 2px rgba(49,46,52,.40);              /* hero overlay text */
+
+  /* ---------- 6. Spacing (4px base) ---------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ---------- 7. Layout ---------- */
+  --container-max: 1140px;
+  --nav-height-mobile: 50px;
+  --nav-height-desktop: 70px;
+
+  /* ---------- 8. Type — raw tokens ---------- */
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  /* web scale */
+  --fs-web-h1: 40px; --lh-web-h1: 54px;
+  --fs-web-h2: 36px; --lh-web-h2: 52px;
+  --fs-web-t1: 24px; --lh-web-t1: 32px;
+  --fs-web-t2: 20px; --lh-web-t2: 30px;
+  --fs-web-b1: 16px; --lh-web-b1: 24px;
+  --fs-web-b2: 15px; --lh-web-b2: 22px;
+  --fs-web-c1: 13px; --lh-web-c1: 18px;
+  --fs-web-c2: 12px; --lh-web-c2: 16px;
+
+  /* mobile scale */
+  --fs-m-h1: 22px; --lh-m-h1: 30px;
+  --fs-m-h2: 20px; --lh-m-h2: 28px;
+  --fs-m-t1: 18px; --lh-m-t1: 26px;
+  --fs-m-t2: 16px; --lh-m-t2: 22px;
+  --fs-m-b1: 14px; --lh-m-b1: 20px;
+  --fs-m-b2: 12px; --lh-m-b2: 18px;
+  --fs-m-c1: 11px; --lh-m-c1: 16px;
+  --fs-m-c2:  9px; --lh-m-c2: 14px;
+
+  /* Global letter-spacing. Pretendard CJK reads best slightly tight. */
+  --tracking: -0.002em;
+}
+
+/* ---------- 9. Base ---------- */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--font-sans);
+  color: var(--fg);
+  background: var(--bg);
+  font-size: var(--fs-web-b1);
+  line-height: var(--lh-web-b1);
+  letter-spacing: var(--tracking);
+  word-break: keep-all; /* ← CJK rule — do not break inside a Korean word */
+}
+
+/* ---------- 10. Type utility classes (mirror production names) ---------- */
+/* WEB */
+.web-h1-bold { font-size: var(--fs-web-h1); line-height: var(--lh-web-h1); letter-spacing: var(--tracking); font-weight: 700; }
+.web-h1      { font-size: var(--fs-web-h1); line-height: var(--lh-web-h1); letter-spacing: var(--tracking); font-weight: 300; }
+.web-h2-bold { font-size: var(--fs-web-h2); line-height: var(--lh-web-h2); letter-spacing: var(--tracking); font-weight: 700; }
+.web-h2      { font-size: var(--fs-web-h2); line-height: var(--lh-web-h2); letter-spacing: var(--tracking); font-weight: 300; }
+.web-t1-bold { font-size: var(--fs-web-t1); line-height: var(--lh-web-t1); letter-spacing: var(--tracking); font-weight: 700; }
+.web-t1      { font-size: var(--fs-web-t1); line-height: var(--lh-web-t1); letter-spacing: var(--tracking); font-weight: 300; }
+.web-t2-bold { font-size: var(--fs-web-t2); line-height: var(--lh-web-t2); letter-spacing: var(--tracking); font-weight: 700; }
+.web-t2      { font-size: var(--fs-web-t2); line-height: var(--lh-web-t2); letter-spacing: var(--tracking); font-weight: 400; }
+.web-b1-bold { font-size: var(--fs-web-b1); line-height: var(--lh-web-b1); letter-spacing: var(--tracking); font-weight: 700; }
+.web-b1      { font-size: var(--fs-web-b1); line-height: var(--lh-web-b1); letter-spacing: var(--tracking); font-weight: 500; }
+.web-b2-bold { font-size: var(--fs-web-b2); line-height: var(--lh-web-b2); letter-spacing: var(--tracking); font-weight: 600; }
+.web-b2      { font-size: var(--fs-web-b2); line-height: var(--lh-web-b2); letter-spacing: var(--tracking); font-weight: 400; }
+.web-c1-bold { font-size: var(--fs-web-c1); line-height: var(--lh-web-c1); letter-spacing: var(--tracking); font-weight: 600; }
+.web-c1      { font-size: var(--fs-web-c1); line-height: var(--lh-web-c1); letter-spacing: var(--tracking); font-weight: 400; }
+.web-c2      { font-size: var(--fs-web-c2); line-height: var(--lh-web-c2); letter-spacing: var(--tracking); font-weight: 400; }
+
+/* MOBILE */
+.mobile-h1-bold { font-size: var(--fs-m-h1); line-height: var(--lh-m-h1); letter-spacing: var(--tracking); font-weight: 700; }
+.mobile-h1      { font-size: var(--fs-m-h1); line-height: var(--lh-m-h1); letter-spacing: var(--tracking); font-weight: 300; }
+.mobile-h2-bold { font-size: var(--fs-m-h2); line-height: var(--lh-m-h2); letter-spacing: var(--tracking); font-weight: 700; }
+.mobile-t1-bold { font-size: var(--fs-m-t1); line-height: var(--lh-m-t1); letter-spacing: var(--tracking); font-weight: 700; }
+.mobile-t2-bold { font-size: var(--fs-m-t2); line-height: var(--lh-m-t2); letter-spacing: var(--tracking); font-weight: 700; }
+.mobile-b1-bold { font-size: var(--fs-m-b1); line-height: var(--lh-m-b1); letter-spacing: var(--tracking); font-weight: 600; }
+.mobile-b1      { font-size: var(--fs-m-b1); line-height: var(--lh-m-b1); letter-spacing: var(--tracking); font-weight: 400; }
+.mobile-b2-bold { font-size: var(--fs-m-b2); line-height: var(--lh-m-b2); letter-spacing: var(--tracking); font-weight: 600; }
+.mobile-b2      { font-size: var(--fs-m-b2); line-height: var(--lh-m-b2); letter-spacing: var(--tracking); font-weight: 400; }
+.mobile-c1-bold { font-size: var(--fs-m-c1); line-height: var(--lh-m-c1); letter-spacing: var(--tracking); font-weight: 600; }
+.mobile-c1      { font-size: var(--fs-m-c1); line-height: var(--lh-m-c1); letter-spacing: var(--tracking); font-weight: 400; }
+.mobile-c2      { font-size: var(--fs-m-c2); line-height: var(--lh-m-c2); letter-spacing: var(--tracking); font-weight: 400; }
+
+.text-shadow { text-shadow: var(--text-shadow-sm); }
+
+/* ---------- 11. Semantic tag defaults (so raw HTML also looks right) ---------- */
+h1 { font-size: var(--fs-web-h1); line-height: var(--lh-web-h1); font-weight: 700; letter-spacing: var(--tracking); color: var(--fg); margin: 0; }
+h2 { font-size: var(--fs-web-h2); line-height: var(--lh-web-h2); font-weight: 700; letter-spacing: var(--tracking); color: var(--fg); margin: 0; }
+h3 { font-size: var(--fs-web-t1); line-height: var(--lh-web-t1); font-weight: 700; letter-spacing: var(--tracking); color: var(--fg); margin: 0; }
+h4 { font-size: var(--fs-web-t2); line-height: var(--lh-web-t2); font-weight: 700; letter-spacing: var(--tracking); color: var(--fg); margin: 0; }
+p  { font-size: var(--fs-web-b1); line-height: var(--lh-web-b1); font-weight: 400; letter-spacing: var(--tracking); color: var(--fg-muted); margin: 0; }
+small { font-size: var(--fs-web-c1); line-height: var(--lh-web-c1); color: var(--fg-subtle); }
+a { color: var(--accent-link); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--color-primary-0); }
+
+/* 12. Utility for subject theming (mirrors data-theme-border/bg/text) */
+[data-theme-border='primary-40']:hover { border-color: var(--color-primary-40); box-shadow: var(--shadow-focus-ring); }
+[data-theme-border='blue-40']:hover    { border-color: var(--color-blue-40);    box-shadow: 0 0 4px 0 var(--color-blue-40); }
+[data-theme-border='red-40']:hover     { border-color: var(--color-red-40);     box-shadow: 0 0 4px 0 var(--color-red-40); }
+[data-theme-border='green-40']:hover   { border-color: var(--color-green-40);   box-shadow: 0 0 4px 0 var(--color-green-40); }
+[data-theme-bg='blue']  { background: var(--color-blue-1); }
+[data-theme-bg='red']   { background: var(--color-red-1); }
+[data-theme-bg='green'] { background: var(--color-green-1); }
+[data-theme-text='blue']  { color: var(--color-blue-0); }
+[data-theme-text='red']   { color: var(--color-red-0); }
+[data-theme-text='green'] { color: var(--color-green-0); }
