@@ -49,7 +49,7 @@ yarn add github:VineyardEdu/vineyard-design-system
 프로젝트의 글로벌 CSS 엔트리에 한 줄만 추가:
 
 ```css
-@import "vineyard-design-system/podobat-design-system/colors_and_type.css";
+@import "vineyard-design-system/podobat-design-system/project/colors_and_type.css";
 ```
 
 이걸로 **색 변수(`--color-primary-0` 등) + Pretendard 웹폰트 + 타이포 클래스(`.web-h1-40` 등) + radius/shadow/spacing 변수** 가 모두 로드된다.
@@ -68,22 +68,22 @@ yarn add github:VineyardEdu/vineyard-design-system
 ### 3. 아이콘 / 에셋
 
 ```tsx
-import chevronRight from "vineyard-design-system/podobat-design-system/assets/chevron-right.svg";
-import logo from "vineyard-design-system/podobat-design-system/assets/logo.svg";
+import chevronRight from "vineyard-design-system/podobat-design-system/project/assets/chevron-right.svg";
+import logo from "vineyard-design-system/podobat-design-system/project/assets/logo.svg";
 
 <img src={chevronRight} alt="" width={24} height={24} />
 ```
 
 3D PNG 아이콘:
 ```tsx
-import idea from "vineyard-design-system/podobat-design-system/assets/3dcon/idea.png";
+import idea from "vineyard-design-system/podobat-design-system/project/assets/3dcon/idea.png";
 ```
 
 ### 4. 컴포넌트 구현
 
 현재 컴포넌트는 **CSS + HTML 스펙** 형태로만 제공된다 (React 컴포넌트 export 없음).
 
-**방법**: `podobat-design-system/preview/<component>.html` 을 열어 마크업과 인라인 `<style>` 을 확인하고, 자기 프로젝트의 JSX 로 옮긴다.
+**방법**: `podobat-design-system/project/preview/<component>.html` 을 열어 마크업과 인라인 `<style>` 을 확인하고, 자기 프로젝트의 JSX 로 옮긴다.
 
 예시 (Button):
 ```tsx
@@ -103,7 +103,7 @@ import idea from "vineyard-design-system/podobat-design-system/assets/3dcon/idea
 </button>
 ```
 
-> **추후**: 클로드디자인이 `components/<name>.css` 를 분리 출력해주면 `@import "vineyard-design-system/podobat-design-system/components/index.css"` 한 줄로 `.btn.primary` 같은 클래스를 바로 쓸 수 있게 됨. 그 시점에 이 가이드가 업데이트될 예정.
+> **추후**: 클로드디자인이 `components/<name>.css` 를 분리 출력해주면 `@import "vineyard-design-system/podobat-design-system/project/components/index.css"` 한 줄로 `.btn.primary` 같은 클래스를 바로 쓸 수 있게 됨. 그 시점에 이 가이드가 업데이트될 예정.
 
 ### 5. 홈페이지 화면 레퍼런스
 
@@ -118,7 +118,7 @@ import idea from "vineyard-design-system/podobat-design-system/assets/3dcon/idea
 - 토큰·폰트·아이콘은 디자인 시스템에서 가져와 쓴다
 - 컴포넌트 구현 시 `preview/*.html` 의 마크업/CSS 를 최대한 그대로 따른다
 - 새 버전 반영 시 `package.json` 의 `#v0.x.x` 태그를 올린다
-- 브랜드 가이드라인(`podobat-design-system/README.md`) 의 tone/voice/layout 규칙을 따른다 — `word-break: keep-all`, 이모지 금지, 등
+- 브랜드 가이드라인(`podobat-design-system/project/README.md`) 의 tone/voice/layout 규칙을 따른다 — `word-break: keep-all`, 이모지 금지, 등
 
 ### ❌ Don't
 
@@ -144,6 +144,8 @@ import idea from "vineyard-design-system/podobat-design-system/assets/3dcon/idea
 이 레포 안에서 함께 읽으면 좋은 것:
 
 - `README.md` — 레포 개요
-- `podobat-design-system/README.md` — 브랜드·비주얼 가이드라인 (Pretendard 사용, word-break 규칙, 컬러 의미 등)
-- `podobat-design-system/SKILL.md` — Claude Code 스킬 메타
+- `podobat-design-system/README.md` — 클로드디자인 핸드오프 메타 (코딩 에이전트 안내, 디자인 정보 아님)
+- `podobat-design-system/project/README.md` — **브랜드·비주얼 가이드라인 ★** (Pretendard 사용, word-break 규칙, 컬러 의미 등)
+- `podobat-design-system/project/SKILL.md` — Claude Code 스킬 메타
+- `podobat-design-system/chats/` — 클로드디자인과의 대화 이력 (디자인 결정 추적용)
 - `docs/setup-discussion.md` — 레포 세팅 배경과 결정 이력

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Podobat Mobile UI Kit — Print</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  html, body { margin:0; background:#fff; font-family: var(--font-sans); }
+  ::-webkit-scrollbar { width:0; height:0; }
+
+  .page {
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    break-after: page;
+  }
+  .page:last-child { break-after: auto; }
+
+  .page-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-gray-5);
+  }
+  .page-head h1 {
+    font-size: 22px; font-weight: 700; letter-spacing: -.002em;
+    color: var(--color-gray-0); margin: 0;
+  }
+  .page-head .meta {
+    font-size: 11px; color: var(--fg-subtle); letter-spacing: .04em;
+    text-transform: uppercase; font-weight: 600;
+  }
+
+  .frames {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    break-inside: avoid;
+  }
+  .frame-wrap {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    break-inside: avoid;
+  }
+  .frame-label {
+    font-size: 11px; font-weight: 600; color: var(--fg-muted);
+    letter-spacing: .02em;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  @media print {
+    html, body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="MobileNav.jsx"></script>
+<script type="text/babel" src="MobileDrawer.jsx"></script>
+<script type="text/babel" src="MobileBanner.jsx"></script>
+<script type="text/babel" src="MobileLinks.jsx"></script>
+<script type="text/babel" src="MobileBoard.jsx"></script>
+<script type="text/babel" src="MobileEduMethod.jsx"></script>
+<script type="text/babel" src="MobileAbout.jsx"></script>
+<script type="text/babel" src="MobileCourses.jsx"></script>
+<script type="text/babel" src="MobileNotices.jsx"></script>
+<script type="text/babel" src="MobileFooter.jsx"></script>
+
+<script type="text/babel">
+function Screen({ route }) {
+  const [path, query] = route.split('?');
+  const tab = (query || '').split('=')[1] || '';
+  const noop = () => {};
+  return (
+    <IOSDevice width={375} height={812}>
+      <div style={{
+        background:'#fff', minHeight:'100%', position:'relative',
+        fontFamily:'var(--font-sans)', paddingTop:59,
+      }}>
+        <MobileNav onMenu={noop} />
+        {path === 'home' && (
+          <>
+            <MobileBanner />
+            <MobileLinks goto={noop} />
+            <MobileBoard />
+            <MobileEduMethod />
+          </>
+        )}
+        {path === 'about'   && <MobileAbout   initialTab={tab} />}
+        {path === 'courses' && <MobileCourses initialTab={tab} />}
+        {path === 'notices' && <MobileNotices initialTab={tab} />}
+        <MobileFooter />
+      </div>
+    </IOSDevice>
+  );
+}
+
+// Scale 375x812 frames to fit A4 portrait (2 side-by-side, ~320px each)
+function ScaledFrame({ route, label }) {
+  const scale = 0.78; // 375 * 0.78 ≈ 293px wide, fits 2-up on A4 (595pt / 72 * 96 ≈ 793px usable)
+  return (
+    <div className="frame-wrap">
+      <div style={{
+        width: 375 * scale, height: 812 * scale,
+        transform: `scale(${scale})`, transformOrigin: 'top left',
+        position: 'relative',
+      }}>
+        <div style={{ width: 375, height: 812, transform: `scale(1)`, position: 'absolute', top: 0, left: 0 }}>
+          <Screen route={route} />
+        </div>
+      </div>
+      <div className="frame-label">{label}</div>
+    </div>
+  );
+}
+
+// Simpler: place unscaled frame inside a CSS transform wrapper
+function Frame({ route, label }) {
+  const scale = 0.72;
+  return (
+    <div className="frame-wrap">
+      <div style={{
+        width: 375 * scale, height: 812 * scale, overflow: 'visible',
+      }}>
+        <div style={{ transform: `scale(${scale})`, transformOrigin: 'top left', width: 375, height: 812 }}>
+          <Screen route={route} />
+        </div>
+      </div>
+      <div className="frame-label">{label}</div>
+    </div>
+  );
+}
+
+function PrintDoc() {
+  const pages = [
+    { title: 'Home',     meta: 'Podobat Mobile · 01', frames: [{ route:'home', label:'홈 / 초기 뷰' }] },
+    { title: 'About',    meta: 'Podobat Mobile · 02', frames: [
+      { route:'about?tab=philosophy', label:'학원 소개 · 교육 철학' },
+      { route:'about?tab=methods',    label:'학원 소개 · 교육 방법' },
+    ]},
+    { title: 'About · cont.', meta: 'Podobat Mobile · 03', frames: [
+      { route:'about?tab=teachers',   label:'학원 소개 · 선생님' },
+      { route:'about?tab=location',   label:'학원 소개 · 찾아오기' },
+    ]},
+    { title: 'Courses',  meta: 'Podobat Mobile · 04', frames: [
+      { route:'courses?tab=all',                 label:'수업 안내 · 전체' },
+      { route:'courses?tab=elementary-writing',  label:'수업 안내 · 초등 논술' },
+    ]},
+    { title: 'Courses · cont.', meta: 'Podobat Mobile · 05', frames: [
+      { route:'courses?tab=middle-writing', label:'수업 안내 · 중등 논술' },
+      { route:'courses?tab=middle-korean',  label:'수업 안내 · 중등 국어' },
+    ]},
+    { title: 'Notices',  meta: 'Podobat Mobile · 06', frames: [
+      { route:'notices?tab=course-opening',  label:'공지사항 · 개강 안내' },
+      { route:'notices?tab=general-notices', label:'공지사항 · 공지사항' },
+    ]},
+  ];
+  return (
+    <>
+      {pages.map((p, i) => (
+        <section key={i} className="page">
+          <div className="page-head">
+            <h1>{p.title}</h1>
+            <span className="meta">{p.meta}</span>
+          </div>
+          <div className="frames">
+            {p.frames.map((f, j) => <Frame key={j} route={f.route} label={f.label} />)}
+          </div>
+        </section>
+      ))}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<PrintDoc />);
+
+// Auto-print once fonts + React + images are ready
+(async () => {
+  // Wait for fonts to load (Pretendard 9 weights)
+  if (document.fonts && document.fonts.ready) {
+    await document.fonts.ready;
+  }
+  // Wait for all images (gradation PNGs, hero photo, 3dcon, logos)
+  const imgs = Array.from(document.images);
+  await Promise.all(imgs.map(img => img.complete
+    ? Promise.resolve()
+    : new Promise(res => { img.onload = img.onerror = res; })
+  ));
+  // Extra settle for React + Babel
+  await new Promise(r => setTimeout(r, 500));
+  window.print();
+})();
+</script>
+</body>
+</html>

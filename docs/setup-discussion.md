@@ -193,3 +193,36 @@ vineyard-design-system/
 2. 확정되면 `git init`, `package.json`, `README.md`, `.gitignore` 작성
 3. 소비 프로젝트 중 1개(예: `vineyard-back-office`)에 붙여 보는 검증
 4. 클로드디자인에 `components.css` 요청
+
+---
+
+## 변경 이력
+
+### v0.2.0 — 2026-04-28: 클로드디자인 핸드오프 번들 구조 수용
+
+클로드디자인이 산출물을 `tar.gz` 핸드오프 번들 형태로 내보내기 시작했고, 이번 라운드의 디자인 결과물을 받아 적용함.
+
+**번들 구조 변화:**
+```
+podobat-design-system/
+├── README.md       (NEW — 코딩 에이전트용 핸드오프 메타)
+├── chats/          (NEW — 클로드디자인 대화 이력)
+└── project/        (기존 podobat-design-system/ 내용이 한 단계 깊어짐)
+```
+
+**디자인 변경 (콘텐츠 단위):**
+- `project/ui_kits/mobile/index-print.html` 추가 — 모바일 UI 킷 PDF 익스포트용
+- 그 외 모든 파일 byte-identical (이번 라운드는 사실상 패키징 변화)
+
+**적용 결정 — 옵션 A (번들 구조 그대로 수용)** :
+- 다음 업데이트 시 폴더 통째 덮어쓰기 가능 ("손 안 대기" 원칙 유지)
+- 챗 이력 보존으로 디자인 결정 추적 가능
+- 트레이드오프: 소비 import 경로 모두 1단계 깊어짐 (`/project/` 추가)
+
+**파급 작업:**
+- `README.md`, `docs/consumer-guide.md` 의 모든 import 경로에 `/project/` 추가
+- 두 README 의 역할 차이 명시 (루트 podobat-design-system/README.md = 핸드오프 메타, project/README.md = 브랜드 가이드)
+- 업데이트 흐름을 "tar.gz 번들 통째 덮어쓰기" 로 단순화
+
+**아직 미반영:**
+- `components/<name>.css` 분리 요청은 다음 라운드 클로드디자인 작업으로
