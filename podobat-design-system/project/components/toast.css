@@ -1,0 +1,59 @@
+/* Podobat · Toast (lightweight inline notification)
+   Consume:  <link rel="stylesheet" href="components/toast.css">
+
+   Markup:
+     <div class="toast toast--ok">
+       <span class="toast__dot"></span>
+       <span>문의가 정상적으로 접수되었습니다.</span>
+     </div>
+
+     <div class="toast toast--info">
+       <span class="toast__dot"></span>
+       <span>새 공지가 도착했습니다.</span>
+     </div>
+
+     <div class="toast toast--err">
+       <img class="toast__icon" src="assets/alert-circle-fill.svg">
+       <span>네트워크 오류입니다. 다시 시도해 주세요.</span>
+     </div>
+*/
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -.002em;
+  color: var(--fg);
+  max-width: 320px;
+}
+
+.toast__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.toast__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--color-primary-1);
+}
+
+/* Variants */
+.toast--ok   .toast__dot { background: #22c55e; }
+.toast--info .toast__dot { background: var(--color-primary-1); }
+.toast--err {
+  border-color: var(--color-secondary-0);
+  color: var(--color-secondary-0);
+}
+.toast--err .toast__dot { background: var(--color-secondary-0); }

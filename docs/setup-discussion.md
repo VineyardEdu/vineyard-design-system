@@ -226,3 +226,44 @@ podobat-design-system/
 
 **아직 미반영:**
 - `components/<name>.css` 분리 요청은 다음 라운드 클로드디자인 작업으로
+
+### v0.3.0 — 2026-04-29: 컴포넌트 CSS 분리 + BEM 네임스페이싱
+
+클로드디자인이 8개 원자 컴포넌트의 CSS 를 외부 파일로 분리해서 출력. 통합 `components.css` 가 아닌 컴포넌트별 분리 + `index.css` 단일 진입점 구조 채택 (앞서 결정한 분리 원칙대로).
+
+**신규 파일**: `project/components/`
+- `buttons.css`, `chips-badges.css`, `dropdown.css`, `floating-widget.css`, `form-inputs.css`, `spinner.css`, `subject-tiles.css`, `toast.css`
+- `index.css` — 8개를 `@import` 로 모은 단일 진입점
+- 각 파일 상단에 마크업 예시 주석 포함 (consumer 가 CSS 안 읽고도 사용법 파악 가능)
+
+**클래스 네이밍 — BEM 컨벤션 채택**:
+
+흔한 이름(`.primary`, `.active`, `.sm` 등) 단독 사용을 피하고 모두 BEM(`block__element--modifier`) 형태로 네임스페이싱. 소비 프로젝트의 다른 CSS 와 충돌 위험 제거.
+
+| 이전 | 변경 후 |
+|------|--------|
+| `.btn.primary` | `.btn.btn--primary` |
+| `.chip.active` | `.chip.chip--active` |
+| `.b-blue` | `.badge--blue` |
+| `.wrap/.trigger/.menu/.opt` (드롭다운) | `.dropdown / .dropdown__trigger / __menu / __opt` (+ `.dropdown--open`) |
+| `.widget/.btn/.top/.pair` (플로팅) | `.fwidget/__btn/__top/__pair` (`.btn` 충돌 회피) |
+| label/input 직접 셀렉터 | `.field__label / .field__input / .field__input--error / .field__error` |
+| `.sm/.md/.lg/.xl` (스피너) | `.spinner--sm/--md/--lg/--xl`, 캡션은 `.spinner__caption` |
+| `.tile.blue/.kicker.blue` | `.tile--blue / .tile__kicker--blue`, 텍스트는 `.tile__title/.tile__desc` |
+| `.err/.ok/.info` (토스트) | `.toast--err/--ok/--info`, `.toast__dot/.toast__icon` |
+
+**Preview HTML 갱신**: 8개 `preview/*.html` 모두 인라인 `<style>` 대신 `<link rel="stylesheet" href="../components/<name>.css">` 로 외부 참조. 잔여 `<style>` 은 preview-only 레이아웃 (`body padding`, `.row`, `.grid`) 만 남음.
+
+**범위 밖 (이번 라운드 미적용)**:
+- `ui_kits/*.jsx` 의 인라인 `style={{...}}` — 별도 라운드, 또는 미적용 (홈페이지 화면 컴포지션이라 다른 프로젝트가 import 하지 않음)
+- `index.html` 의 글로벌 스타일 — 카탈로그용
+
+**파급 작업:**
+- `consumer-guide.md` 의 컴포넌트 섹션 전면 재작성 (인라인 style 예시 → BEM 클래스 예시)
+- `README.md` 의 컴포넌트 섹션도 BEM 사용법으로 갱신, 디렉토리 트리에 `components/` 추가
+- package.json 0.2.0 → 0.3.0
+
+**다음 라운드 후보** (Claude Design 의 chat 마무리 제안 + 우리 측 우선순위):
+1. `components/README.md` — 8개 컴포넌트의 전체 클래스 API 표 (consumer 가 CSS 안 읽고 작업 가능)
+2. Modal/Dialog 컴포넌트 (codebase 에 `course-detail-modal.tsx` 있는데 디자인 시스템 누락)
+3. Empty / Error / Skeleton 패턴

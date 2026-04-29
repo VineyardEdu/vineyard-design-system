@@ -1,0 +1,55 @@
+/* Podobat · Subject Tile (course preview card with color-coded hover)
+   Consume:  <link rel="stylesheet" href="components/subject-tiles.css">
+
+   Markup:
+     <a class="tile tile--blue">
+       <span class="tile__kicker tile__kicker--blue">초등 논술</span>
+       <h4 class="tile__title">구조 따라 생각을<br>펼치는 글쓰기</h4>
+       <p class="tile__desc">관찰 · 비교 · 해석</p>
+     </a>
+*/
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 110px;
+  text-decoration: none;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+.tile:hover { transform: translateY(-4px); }
+
+.tile__kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--fg-muted);
+}
+.tile__title {
+  margin: 0;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: -.002em;
+  color: var(--fg);
+}
+.tile__desc {
+  margin: 0;
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+/* Color modifiers — applied to the tile and the kicker */
+.tile--blue:hover  { border-color: var(--color-blue-40);  box-shadow: 0 0 4px 0 var(--color-blue-40); }
+.tile--red:hover   { border-color: var(--color-red-40);   box-shadow: 0 0 4px 0 var(--color-red-40); }
+.tile--green:hover { border-color: var(--color-green-40); box-shadow: 0 0 4px 0 var(--color-green-40); }
+
+.tile__kicker--blue  { color: var(--color-blue-0); }
+.tile__kicker--red   { color: var(--color-red-0); }
+.tile__kicker--green { color: var(--color-green-0); }

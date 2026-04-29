@@ -1,33 +1,22 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+<link rel="stylesheet" href="../components/chips-badges.css">
 <style>
+  /* preview-only layout */
   body { padding: 20px; }
   .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-  .chip {
-    font-family: var(--font-sans); font-size:14px; font-weight:500; letter-spacing:-.002em;
-    padding: 8px 16px; border-radius: 9999px; border: 1px solid var(--border);
-    background:#fff; color: var(--fg);
-    box-shadow: 0 0 1px 0 rgba(49,46,52,.40);
-    cursor:pointer; transition: all .2s;
-  }
-  .chip:hover { background: var(--color-primary-2); border-color: var(--color-primary-40); }
-  .chip.active { background: var(--color-primary-1); color: var(--color-gray-6); border-color: var(--color-primary-1); box-shadow: 0 0 1px 0 rgba(105,81,137,.40); }
-  .badge { display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:2px; font-size:11px; font-weight:600; }
-  .b-blue  { background: var(--color-blue-1);  color: var(--color-blue-0); }
-  .b-red   { background: var(--color-red-1);   color: var(--color-red-0); }
-  .b-green { background: var(--color-green-1); color: var(--color-green-0); }
-  .b-orange{ background:#fff4ec; color: var(--color-secondary-0); }
 </style></head>
 <body><div class="card">
   <div class="row" style="margin-bottom:12px">
     <button class="chip">전체</button>
-    <button class="chip active">초등 논술</button>
+    <button class="chip chip--active">초등 논술</button>
     <button class="chip">중등 국어</button>
     <button class="chip">중등 논술</button>
   </div>
   <div class="row">
-    <span class="badge b-blue">초등</span>
-    <span class="badge b-green">국어</span>
-    <span class="badge b-red">논술</span>
-    <span class="badge b-orange">생각 확장</span>
+    <span class="badge badge--blue">초등</span>
+    <span class="badge badge--green">국어</span>
+    <span class="badge badge--red">논술</span>
+    <span class="badge badge--orange">생각 확장</span>
   </div>
 </div></body></html>

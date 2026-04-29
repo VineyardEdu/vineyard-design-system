@@ -1,0 +1,56 @@
+/* Podobat · Chip & Badge
+   Consume:  <link rel="stylesheet" href="components/chips-badges.css">
+
+   Markup — Chip (filter pill, interactive):
+     <button class="chip">전체</button>
+     <button class="chip chip--active">초등 논술</button>
+
+   Markup — Badge (static label):
+     <span class="badge badge--blue">초등</span>
+     <span class="badge badge--green">국어</span>
+     <span class="badge badge--red">논술</span>
+     <span class="badge badge--orange">생각 확장</span>
+*/
+
+/* ---------- Chip ---------- */
+.chip {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -.002em;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--fg);
+  box-shadow: 0 0 1px 0 rgba(49, 46, 52, .40);
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s, box-shadow .2s;
+}
+.chip:hover {
+  background: var(--color-primary-2);
+  border-color: var(--color-primary-40);
+}
+.chip--active {
+  background: var(--color-primary-1);
+  color: var(--color-gray-6);
+  border-color: var(--color-primary-1);
+  box-shadow: 0 0 1px 0 rgba(105, 81, 137, .40);
+}
+
+/* ---------- Badge ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -.002em;
+}
+.badge--blue   { background: var(--color-blue-1);    color: var(--color-blue-0); }
+.badge--red    { background: var(--color-red-1);     color: var(--color-red-0); }
+.badge--green  { background: var(--color-green-1);   color: var(--color-green-0); }
+.badge--orange { background: #fff4ec;                color: var(--color-secondary-0); }
+.badge--gray   { background: var(--color-gray-6);    color: var(--fg-muted); }

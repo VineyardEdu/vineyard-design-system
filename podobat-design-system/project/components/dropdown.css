@@ -1,0 +1,72 @@
+/* Podobat · Dropdown / Custom Select
+   Consume:  <link rel="stylesheet" href="components/dropdown.css">
+
+   Markup:
+     <div class="dropdown">
+       <button class="dropdown__trigger">
+         <span>초등 논술</span>
+         <span class="dropdown__chev">⌃</span>
+       </button>
+       <div class="dropdown__menu">
+         <div class="dropdown__opt">전체</div>
+         <div class="dropdown__opt dropdown__opt--active">초등 논술</div>
+         <div class="dropdown__opt">중등 논술</div>
+       </div>
+     </div>
+*/
+
+.dropdown { position: relative; display: inline-block; min-width: 200px; }
+
+.dropdown__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid var(--color-primary-0);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -.002em;
+  color: var(--color-gray-1);
+  cursor: pointer;
+}
+.dropdown__chev {
+  display: inline-block;
+  font-size: 18px;
+  color: var(--color-gray-1);
+  transform: rotate(180deg);
+  transition: transform .2s;
+}
+.dropdown--open .dropdown__chev { transform: rotate(0deg); }
+
+.dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.dropdown__opt {
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-gray-1);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.dropdown__opt:hover { background: var(--color-gray-6); }
+.dropdown__opt--active {
+  background: var(--color-primary-1);
+  color: #fff;
+}

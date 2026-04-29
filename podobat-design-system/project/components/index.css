@@ -1,0 +1,18 @@
+/* Podobat Components — single entry point
+   Consume:  <link rel="stylesheet" href="components/index.css">
+             (also requires colors_and_type.css for design tokens)
+
+   Each component is a self-contained, importable file. Pick & choose:
+     <link rel="stylesheet" href="components/buttons.css">
+     <link rel="stylesheet" href="components/chips-badges.css">
+   …or pull everything via this file.
+*/
+
+@import url('./buttons.css');
+@import url('./chips-badges.css');
+@import url('./dropdown.css');
+@import url('./floating-widget.css');
+@import url('./form-inputs.css');
+@import url('./spinner.css');
+@import url('./subject-tiles.css');
+@import url('./toast.css');

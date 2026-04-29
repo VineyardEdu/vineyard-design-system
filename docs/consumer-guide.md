@@ -79,31 +79,57 @@ import logo from "vineyard-design-system/podobat-design-system/project/assets/lo
 import idea from "vineyard-design-system/podobat-design-system/project/assets/3dcon/idea.png";
 ```
 
-### 4. 컴포넌트 구현
+### 4. 컴포넌트 사용
 
-현재 컴포넌트는 **CSS + HTML 스펙** 형태로만 제공된다 (React 컴포넌트 export 없음).
+컴포넌트는 **CSS 클래스로 제공**된다 (React 래퍼 없음). 글로벌 CSS 엔트리에서 한 번 import 하고, 마크업에 클래스명만 붙이면 된다.
 
-**방법**: `podobat-design-system/project/preview/<component>.html` 을 열어 마크업과 인라인 `<style>` 을 확인하고, 자기 프로젝트의 JSX 로 옮긴다.
-
-예시 (Button):
-```tsx
-// preview/buttons.html 을 참고하여 JSX 로 변환
-<button
-  className="btn primary"
-  style={{
-    background: "var(--color-primary-0)",
-    color: "#fff",
-    fontFamily: "var(--font-sans)",
-    fontWeight: 600,
-    borderRadius: 12,
-    padding: "10px 20px",
-  }}
->
-  자세히 보기
-</button>
+**전체 import**:
+```css
+@import "vineyard-design-system/podobat-design-system/project/colors_and_type.css";
+@import "vineyard-design-system/podobat-design-system/project/components/index.css";
 ```
 
-> **추후**: 클로드디자인이 `components/<name>.css` 를 분리 출력해주면 `@import "vineyard-design-system/podobat-design-system/project/components/index.css"` 한 줄로 `.btn.primary` 같은 클래스를 바로 쓸 수 있게 됨. 그 시점에 이 가이드가 업데이트될 예정.
+**필요한 컴포넌트만 선택 import**:
+```css
+@import "vineyard-design-system/podobat-design-system/project/components/buttons.css";
+@import "vineyard-design-system/podobat-design-system/project/components/form-inputs.css";
+```
+
+**클래스 네이밍 컨벤션 (BEM)**:
+- 베이스(Block): `.btn`, `.chip`, `.dropdown`, `.fwidget`, `.field`, `.spinner`, `.tile`, `.toast`
+- 변형(Modifier): `.btn--primary`, `.chip--active`, `.toast--err`, `.spinner--lg`
+- 하위 요소(Element): `.dropdown__menu`, `.fwidget__btn`, `.field__label`, `.toast__dot`
+
+흔한 이름(`.primary`, `.active`, `.sm`)을 단독으로 쓰지 않아 소비 프로젝트의 다른 CSS 와 충돌하지 않는다.
+
+**예시**:
+
+```tsx
+// Button
+<button className="btn btn--primary">자세히 보기</button>
+<button className="btn btn--secondary">문의하기</button>
+<button className="btn btn--ghost">더 알아보기 →</button>
+<button className="btn btn--primary btn--sm">+ 접수</button>
+<button className="btn" disabled>비활성</button>
+
+// Chip / Badge
+<span className="chip chip--active">전체</span>
+<span className="badge badge--blue">초등 논술</span>
+
+// Form input
+<label className="field">
+  <span className="field__label">이름</span>
+  <input className="field__input" />
+</label>
+
+// Toast
+<div className="toast toast--err">
+  <span className="toast__dot" />
+  오류가 발생했습니다
+</div>
+```
+
+각 컴포넌트의 전체 클래스 목록은 해당 `components/<name>.css` 파일 상단 주석을 참고. 시각 스펙은 `preview/<name>.html` 참고.
 
 ### 5. 홈페이지 화면 레퍼런스
 

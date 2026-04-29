@@ -1,40 +1,19 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+<link rel="stylesheet" href="../components/floating-widget.css">
 <style>
+  /* preview-only layout */
   body { padding: 20px; display:flex; justify-content: center; background: #fafafc; }
-  .widget {
-    width: 72px; display:flex; flex-direction:column; gap:8px;
-  }
-  .stack {
-    border: 1px solid var(--color-gray-6);
-    border-radius: 8px;
-    box-shadow: 0 0 6px 0 rgba(0,0,0,0.16);
-    overflow:hidden; background:#fff;
-  }
-  .btn {
-    width:100%; padding:12px 0; background: var(--color-primary-2);
-    display:flex; align-items:center; justify-content:center;
-    border:none; cursor:pointer;
-    border-bottom: 1px solid var(--color-gray-6);
-  }
-  .btn:last-child { border-bottom: none; }
-  .btn img { width:18px; height:18px; }
-  .btn .pair { display:flex; align-items:center; gap:3px; font-size:11px; color:var(--color-gray-1); }
-  .btn .pair img { width:12px; height:12px; }
-  .top {
-    background: var(--color-primary-0); color:#fff;
-    padding:6px 0; border-radius:8px; text-align:center;
-    font-size:11px; box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16); cursor:pointer;
-  }
 </style></head>
 <body><div class="card">
-  <div class="widget">
-    <div class="stack">
-      <button class="btn" style="background: var(--color-primary-2)"><img src="../assets/home.svg"></button>
-      <button class="btn"><div class="pair"><img src="../assets/logo/naver-logo.svg"><span>카페</span></div></button>
-      <button class="btn"><img src="../assets/logo/naver-blog-logo.svg" style="width:26px; height:14px"></button>
-      <button class="btn"><img src="../assets/logo/youtube-logo.svg" style="width:14px; height:14px"></button>
-      <button class="btn"><img src="../assets/logo/kakao-talk-logo.svg" style="width:14px; height:14px"></button>
+  <div class="fwidget">
+    <div class="fwidget__stack">
+      <button class="fwidget__btn fwidget__btn--filled"><img src="../assets/home.svg"></button>
+      <button class="fwidget__btn"><span class="fwidget__pair"><img src="../assets/logo/naver-logo.svg"><span>카페</span></span></button>
+      <button class="fwidget__btn"><img src="../assets/logo/naver-blog-logo.svg" style="width:26px; height:14px"></button>
+      <button class="fwidget__btn"><img src="../assets/logo/youtube-logo.svg" style="width:14px; height:14px"></button>
+      <button class="fwidget__btn"><img src="../assets/logo/kakao-talk-logo.svg" style="width:14px; height:14px"></button>
     </div>
-    <div class="top">TOP</div>
+    <button class="fwidget__top">TOP</button>
   </div>
 </div></body></html>

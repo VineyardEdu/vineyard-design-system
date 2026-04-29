@@ -1,0 +1,77 @@
+/* Podobat · Floating Widget (right-side stacked icon column + TOP button)
+   Consume:  <link rel="stylesheet" href="components/floating-widget.css">
+
+   Markup:
+     <div class="fwidget">
+       <div class="fwidget__stack">
+         <button class="fwidget__btn fwidget__btn--filled"><img src="…"></button>
+         <button class="fwidget__btn"><img src="…"></button>
+         <button class="fwidget__btn">
+           <span class="fwidget__pair"><img src="…"><span>카페</span></span>
+         </button>
+       </div>
+       <button class="fwidget__top">TOP</button>
+     </div>
+*/
+
+.fwidget {
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fwidget__stack {
+  background: #fff;
+  border: 1px solid var(--color-gray-6);
+  border-radius: 8px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, .16);
+  overflow: hidden;
+}
+
+.fwidget__btn {
+  width: 100%;
+  padding: 12px 0;
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid var(--color-gray-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .15s;
+}
+.fwidget__btn:last-child { border-bottom: none; }
+.fwidget__btn:hover { background: var(--color-primary-2); }
+
+/* First / featured slot uses primary-2 wash */
+.fwidget__btn--filled { background: var(--color-primary-2); }
+
+.fwidget__btn img { width: 18px; height: 18px; }
+
+.fwidget__pair {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-gray-1);
+}
+.fwidget__pair img { width: 12px; height: 12px; }
+
+.fwidget__top {
+  background: var(--color-primary-0);
+  color: #fff;
+  padding: 6px 0;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -.002em;
+  cursor: pointer;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .16);
+  transition: background .15s;
+}
+.fwidget__top:hover { background: var(--color-primary-1); }

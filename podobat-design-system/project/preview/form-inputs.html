@@ -1,37 +1,29 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+<link rel="stylesheet" href="../components/form-inputs.css">
 <style>
+  /* preview-only layout */
   body { padding: 20px; }
   .grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
-  .field { display:flex; flex-direction:column; gap:6px; }
-  label { font-size:13px; font-weight:600; color:var(--fg); letter-spacing:-.002em; }
-  input, select, textarea {
-    font-family: var(--font-sans); font-size: 15px; color: var(--fg); padding: 12px 14px;
-    border-radius: 8px; border: 1px solid var(--border); background:#fff; outline:none;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  input::placeholder { color: var(--fg-subtle); }
-  input:focus { border-color: var(--color-primary-1); box-shadow: 0 0 4px 0 rgba(105,81,137,.40); }
-  .error { border-color: var(--color-secondary-0) !important; }
-  .err-msg { font-size:11px; color: var(--color-secondary-0); display:flex; align-items:center; gap:4px; }
 </style></head>
 <body><div class="card">
   <div class="grid">
     <div class="field">
-      <label>이름</label>
-      <input placeholder="홍길동" value="김하영">
+      <label class="field__label">이름</label>
+      <input class="field__input" placeholder="홍길동" value="김하영">
     </div>
     <div class="field">
-      <label>연락처</label>
-      <input class="error" placeholder="010-0000-0000" value="010-12">
-      <span class="err-msg">• 올바른 번호를 입력해 주세요</span>
+      <label class="field__label">연락처</label>
+      <input class="field__input field__input--error" placeholder="010-0000-0000" value="010-12">
+      <span class="field__error">• 올바른 번호를 입력해 주세요</span>
     </div>
     <div class="field">
-      <label>학년</label>
-      <select><option>초등 5학년</option></select>
+      <label class="field__label">학년</label>
+      <select class="field__input"><option>초등 5학년</option></select>
     </div>
     <div class="field">
-      <label>문의 내용</label>
-      <input placeholder="어떤 과정이 궁금하세요?">
+      <label class="field__label">문의 내용</label>
+      <input class="field__input" placeholder="어떤 과정이 궁금하세요?">
     </div>
   </div>
 </div></body></html>

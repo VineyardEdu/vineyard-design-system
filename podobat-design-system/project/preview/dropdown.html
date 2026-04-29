@@ -1,37 +1,24 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+<link rel="stylesheet" href="../components/dropdown.css">
 <style>
+  /* preview-only layout */
   body { padding: 20px; }
-  .wrap { position: relative; width: 260px; }
-  .trigger {
-    display:flex; align-items:center; justify-content: space-between; gap:8px;
-    width:100%; padding: 10px 12px;
-    border: 1px solid var(--color-primary-0); border-radius: 6px;
-    background: #fff; font-size: 15px; color: var(--color-gray-1);
-    font-weight: 400; letter-spacing: -.002em;
-  }
-  .trigger .chev { color: var(--color-gray-1); font-size:18px; transform: rotate(180deg); transition: transform .2s; display:inline-block; }
-  .menu {
-    position:absolute; top:100%; left:0; right:0; margin-top:4px;
-    background:#fff; border: 1px solid var(--border); border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(0,0,0,.08); overflow:hidden;
-  }
-  .opt { padding: 10px 12px; font-size: 14px; color: var(--color-gray-1); cursor:pointer; transition: background .15s; }
-  .opt:hover { background: var(--color-gray-6); }
-  .opt.active { background: var(--color-primary-1); color: #fff; }
   .row { display:flex; gap:24px; align-items:flex-start; }
+  .dropdown { width: 260px; }
 </style></head>
 <body><div class="card">
   <div class="row">
-    <div class="wrap">
-      <button class="trigger">
+    <div class="dropdown">
+      <button class="dropdown__trigger">
         <span>초등 논술</span>
-        <span class="chev">⌃</span>
+        <span class="dropdown__chev">⌃</span>
       </button>
-      <div class="menu">
-        <div class="opt">전체</div>
-        <div class="opt active">초등 논술</div>
-        <div class="opt">중등 논술</div>
-        <div class="opt">중등 국어</div>
+      <div class="dropdown__menu">
+        <div class="dropdown__opt">전체</div>
+        <div class="dropdown__opt dropdown__opt--active">초등 논술</div>
+        <div class="dropdown__opt">중등 논술</div>
+        <div class="dropdown__opt">중등 국어</div>
       </div>
     </div>
     <div style="font-size:12px;color:var(--fg-subtle);margin-top:12px;max-width:260px;line-height:18px">

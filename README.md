@@ -19,6 +19,7 @@ vineyard-design-system/
 │       ├── colors_and_type.css      토큰 (색·타이포·radius·shadow·spacing)
 │       ├── fonts/                   Pretendard woff2 9종
 │       ├── assets/                  플랫 SVG 아이콘 + 3D PNG + 로고 + gradation
+│       ├── components/              컴포넌트별 CSS 파일 + index.css (8개 + 진입점)
 │       ├── preview/                 컴포넌트 HTML 스펙 (Button, Chip, Badge, Dropdown, Floating Widget, Form Inputs, Loading Spinner, Subject Tiles, Toasts 등)
 │       └── ui_kits/                 홈페이지 화면 JSX 레퍼런스 (web/mobile)
 ├── docs/                          이 레포의 설계 문서 (consumer-guide, setup-discussion)
@@ -61,7 +62,26 @@ import chevronRight from "vineyard-design-system/podobat-design-system/project/a
 
 ### 4. 컴포넌트 스펙 참고
 
-각 컴포넌트를 구현할 때는 `podobat-design-system/project/preview/*.html` 의 마크업과 CSS 를 레퍼런스로 사용한다. 현재는 스펙(HTML + 인라인 CSS) 형태로만 제공되며, 컴포넌트별로 분리된 CSS 파일(`project/components/<name>.css`)은 클로드디자인 후속 라운드에서 추가될 예정.
+컴포넌트는 **BEM 클래스 기반 CSS** 로 제공된다 (`project/components/<name>.css`). 전체를 한 번에 로드:
+
+```css
+@import "vineyard-design-system/podobat-design-system/project/components/index.css";
+```
+
+또는 필요한 것만:
+
+```css
+@import "vineyard-design-system/podobat-design-system/project/components/buttons.css";
+```
+
+마크업 예시:
+
+```tsx
+<button className="btn btn--primary">자세히 보기</button>
+<span className="chip chip--active">전체</span>
+```
+
+각 컴포넌트의 전체 클래스 API 와 사용 예시는 [`docs/consumer-guide.md`](./docs/consumer-guide.md) 참고. 시각 스펙은 `project/preview/<name>.html` 참고.
 
 ---
 

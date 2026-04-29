@@ -1,0 +1,48 @@
+/* Podobat · Loading Spinner
+   Consume:  <link rel="stylesheet" href="components/spinner.css">
+
+   Markup:
+     <div class="spinner spinner--sm"></div>
+     <div class="spinner spinner--md"></div>
+     <div class="spinner spinner--lg"></div>
+     <div class="spinner spinner--xl"></div>
+
+   With caption:
+     <div>
+       <div class="spinner spinner--md"></div>
+       <div class="spinner__caption">불러오는 중…</div>
+     </div>
+*/
+
+@keyframes podobat-spin { to { transform: rotate(360deg); } }
+
+.spinner {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--color-gray-5);
+  position: relative;
+}
+.spinner::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: inherit;
+  border-color: transparent;
+  border-top-color: var(--color-primary-1);
+  animation: podobat-spin 1s linear infinite;
+}
+
+.spinner--sm { width: 16px; height: 16px; border-width: 2px; }
+.spinner--md { width: 32px; height: 32px; border-width: 2px; }
+.spinner--lg { width: 40px; height: 40px; border-width: 2px; }
+.spinner--xl { width: 48px; height: 48px; border-width: 4px; }
+
+.spinner__caption {
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-gray-1);
+  text-align: center;
+}
