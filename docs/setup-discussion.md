@@ -246,7 +246,7 @@ podobat-design-system/
 | `.chip.active` | `.chip.chip--active` |
 | `.b-blue` | `.badge--blue` |
 | `.wrap/.trigger/.menu/.opt` (드롭다운) | `.dropdown / .dropdown__trigger / __menu / __opt` (+ `.dropdown--open`) |
-| `.widget/.btn/.top/.pair` (플로팅) | `.fwidget/__btn/__top/__pair` (`.btn` 충돌 회피) |
+| `.widget/.stack/.btn/.top/.pair` (플로팅) | `.fwidget/__stack/__btn/__top/__pair` (`.btn` 충돌 회피) |
 | label/input 직접 셀렉터 | `.field__label / .field__input / .field__input--error / .field__error` |
 | `.sm/.md/.lg/.xl` (스피너) | `.spinner--sm/--md/--lg/--xl`, 캡션은 `.spinner__caption` |
 | `.tile.blue/.kicker.blue` | `.tile--blue / .tile__kicker--blue`, 텍스트는 `.tile__title/.tile__desc` |

@@ -96,7 +96,7 @@ import idea from "vineyard-design-system/podobat-design-system/project/assets/3d
 ```
 
 **클래스 네이밍 컨벤션 (BEM)**:
-- 베이스(Block): `.btn`, `.chip`, `.dropdown`, `.fwidget`, `.field`, `.spinner`, `.tile`, `.toast`
+- 베이스(Block): `.btn`, `.chip`, `.badge`, `.dropdown`, `.fwidget`, `.field`, `.spinner`, `.tile`, `.toast`
 - 변형(Modifier): `.btn--primary`, `.chip--active`, `.toast--err`, `.spinner--lg`
 - 하위 요소(Element): `.dropdown__menu`, `.fwidget__btn`, `.field__label`, `.toast__dot`
 
