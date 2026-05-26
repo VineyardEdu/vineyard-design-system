@@ -22,7 +22,7 @@ vineyard-design-system/
 │       ├── components/              컴포넌트별 CSS 파일 + index.css (8개 + 진입점)
 │       ├── preview/                 컴포넌트 HTML 스펙 (Button, Chip, Badge, Dropdown, Floating Widget, Form Inputs, Loading Spinner, Subject Tiles, Toasts 등)
 │       └── ui_kits/                 홈페이지 화면 JSX 레퍼런스 (web/mobile)
-├── docs/                          이 레포의 설계 문서 (consumer-guide, setup-discussion)
+├── docs/                          이 레포의 설계 문서 (consumer-guide, brand-voice, setup-discussion)
 └── package.json
 ```
 

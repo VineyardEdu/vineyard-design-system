@@ -144,7 +144,8 @@ import idea from "vineyard-design-system/podobat-design-system/project/assets/3d
 - 토큰·폰트·아이콘은 디자인 시스템에서 가져와 쓴다
 - 컴포넌트 구현 시 `preview/*.html` 의 마크업/CSS 를 최대한 그대로 따른다
 - 새 버전 반영 시 `package.json` 의 `#v0.x.x` 태그를 올린다
-- 브랜드 가이드라인(`podobat-design-system/project/README.md`) 의 tone/voice/layout 규칙을 따른다 — `word-break: keep-all`, 이모지 금지, 등
+- 시각 가이드라인(`podobat-design-system/project/README.md`) 의 layout 규칙을 따른다 — `word-break: keep-all`, 이모지 금지, 등
+- 카피·라이팅은 **[`docs/brand-voice.md`](./brand-voice.md)** 를 따른다 — 명사형 마침, 대구 구조, "아이들" 호칭, 최상급 금지, 등
 
 ### ❌ Don't
 
@@ -171,7 +172,8 @@ import idea from "vineyard-design-system/podobat-design-system/project/assets/3d
 
 - `README.md` — 레포 개요
 - `podobat-design-system/README.md` — 클로드디자인 핸드오프 메타 (코딩 에이전트 안내, 디자인 정보 아님)
-- `podobat-design-system/project/README.md` — **브랜드·비주얼 가이드라인 ★** (Pretendard 사용, word-break 규칙, 컬러 의미 등)
+- `podobat-design-system/project/README.md` — **시각·비주얼 가이드라인 ★** (Pretendard 사용, word-break 규칙, 컬러 의미 등)
+- `docs/brand-voice.md` — **브랜드 보이스 가이드 ★** (톤, 어휘, 호칭, CTA 패턴)
 - `podobat-design-system/project/SKILL.md` — Claude Code 스킬 메타
 - `podobat-design-system/chats/` — 클로드디자인과의 대화 이력 (디자인 결정 추적용)
 - `docs/setup-discussion.md` — 레포 세팅 배경과 결정 이력
